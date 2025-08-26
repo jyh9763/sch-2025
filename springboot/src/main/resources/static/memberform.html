@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>멤버 정보 입력</h1>
+    <!--
+    서버로 데이터 전송을 위해 form 태그 생성
+    action="서버주소", method="전송 방식"
+    -->
+    <form action="/member", method="get">
+      <ul>
+        <li>
+          <label>이름</label>
+          <input type="text" name="name">
+        </li>
+        <li>
+          <label>나이</label>
+          <input type="text" name="age">
+        </li>
+        <li>
+          <label>주소</label>
+          <input type="text" name="address">
+        </li>
+        <li>
+          <label>과목</label>
+          <input type="text" name="subject">
+        </li>
+        <li>
+          <button type="submit">제출</button>
+          <button type="reset">취소</button>
+        </li>
+      </ul>
+    </form>
+</body>
+</html>
