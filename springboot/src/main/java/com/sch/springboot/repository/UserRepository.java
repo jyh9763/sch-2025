@@ -40,12 +40,6 @@ public class UserRepository {
     * signUp : 회원가입 처리
      */
     public Map<String, String> signUp(User user){
-        // DB 이용해야 되는데 없으니까 임시 데이터 생성
-        String did = "admin";
-        String dpass = "1234";
-        String dname = "홍길동";
-        String demail = "admin@a.com";
-
         Map<String, String> result = new HashMap<String, String>();
 
         result.put("id", user.getId());
