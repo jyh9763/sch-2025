@@ -2,15 +2,16 @@ package com.sch.springboot.dto;
 
 public class Employee {
     // 변수 선언
-    private String sno;
+    private Long sno;
     private String name;
     private String department;
+    private String address;
 
-    public String getSno() {
+    public Long getSno() {
         return sno;
     }
 
-    public void setSno(String sno) {
+    public void setSno(Long sno) {
         this.sno = sno;
     }
 
@@ -28,5 +29,13 @@ public class Employee {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

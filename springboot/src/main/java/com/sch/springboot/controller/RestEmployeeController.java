@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
-@Controller
+@RestController
+@RequestMapping("/api")     // React axios?에서 /api로 들어오는 모든 것은 이 컨트롤러가 관리함.
+@CrossOrigin (origins = "http://localhost:3000")
 public class RestEmployeeController {
 
     EmployeeService employeeService;
@@ -17,6 +19,19 @@ public class RestEmployeeController {
     @Autowired
     public RestEmployeeController(EmployeeService employeeService){
         this.employeeService = employeeService;
+    }
+
+    // React --> 사원 등록
+    // PostMapping의 주소는 React의 axios의 주소
+    @PostMapping("/employees/register")
+    public String employeeRegister(@RequestBody Employee employee){
+        return employeeService.register(employee);
+    }
+
+    // React --> 사원 리스트
+    @GetMapping("/employees")
+    public List<Employee> employees(){
+        return employeeService.findAll();
     }
 
     @PostMapping("/register")
