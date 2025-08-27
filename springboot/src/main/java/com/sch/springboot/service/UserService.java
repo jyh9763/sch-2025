@@ -10,7 +10,13 @@ import java.util.Map;
 public class UserService {
     // java method
     // Controller의 데이터를 받음
-    UserRepository userRepository = new UserRepository();
+    //UserRepository userRepository = new UserRepository();
+
+    UserRepository userRepository;
+    // 생성자에서 느슨한 결합
+    public UserService(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
 
     /*
     * login : 로그인 비즈니스 로직 처리

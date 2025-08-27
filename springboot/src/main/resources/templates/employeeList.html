@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>사원 목록</title>
+</head>
+<body>
+    <h1>사원 목록</h1>
+    <h3 th:text="${list.size()}"></h3>
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>시원 번호</th>
+                <th>이름</th>
+                <th>부서</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="employee : ${list}">
+                <td th:text="${employee.sno}"></td>
+                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.department}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/employeeRegister.html">사원 등록</a>&nbsp;&nbsp;&nbsp;
+    <a href="/employee.html">홈페이지로</a>
+</body>
+</html>
