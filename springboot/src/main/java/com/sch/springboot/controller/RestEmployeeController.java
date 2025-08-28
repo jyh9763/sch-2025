@@ -24,7 +24,7 @@ public class RestEmployeeController {
     // React --> 사원 등록
     // PostMapping의 주소는 React의 axios의 주소
     @PostMapping("/employees/register")
-    public String employeeRegister(@RequestBody Employee employee){
+    public int employeeRegister(@RequestBody Employee employee){
         return employeeService.register(employee);
     }
 
@@ -34,10 +34,10 @@ public class RestEmployeeController {
         return employeeService.findAll();
     }
 
-    @PostMapping("/register")
-    public String register(Employee employee){
-        return employeeService.register(employee);  // 이렇게 하면 바로 브라우저로 전달됨
-    }
+//    @PostMapping("/register")
+//    public String register(Employee employee){
+//        return employeeService.register(employee);  // 이렇게 하면 바로 브라우저로 전달됨
+//    }
 
     @GetMapping("/list")
     public String list(Model model){

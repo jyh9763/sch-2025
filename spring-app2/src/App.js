@@ -11,17 +11,17 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1 className="App-title">사원관리 프로그램(React)</h1>
+      <h1 className="App-title">회원관리 프로그램(React)</h1>
       {page === "home" && (
         <p>
           <span
             className="App-link"
             onClick={() => handleChangePage("register")}
           >
-            사원 등록{" "}
+            회원 등록{" "}
           </span>
           <span className="App-link" onClick={() => handleChangePage("list")}>
-            사원 리스트
+            회원 리스트
           </span>
         </p>
       )}
@@ -52,7 +52,7 @@ function EmployeeRegister(props) {
     };
 
     axios
-      .post("http://localhost:8080/api/employees/register", data)
+      .post("http://localhost:8080/api/members/register", data)
       .then((response) => {
         if (response.data !== 0) {
           alert("가입이 완료되었습니다");
@@ -69,7 +69,7 @@ function EmployeeRegister(props) {
       <form>
         <ul>
           <li>
-            <label htmlFor="name">사번</label>
+            <label htmlFor="name">회원번호</label>
             <input
               type="text"
               id="sno"
@@ -131,7 +131,7 @@ function EmployeeList(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/employees")
+      .get("http://localhost:8080/api/members")
       .then((response) => {
         console.log(response.data);
         setEmployeeList(response.data);
@@ -144,11 +144,11 @@ function EmployeeList(props) {
       <table className="App-memberList-table">
         <thead>
           <tr>
-            <th>사원번호</th>
+            <th>회원번호</th>
             <th>이름</th>
             <th>주소</th>
             <th>부서</th>
-            <th>입사일</th>
+            <th>가입일</th>
           </tr>
         </thead>
         <tbody>
@@ -174,7 +174,7 @@ function EmployeeList(props) {
           className="App-link"
           onClick={() => props.handleChangePage("register")}
         >
-          사원 등록
+          회원 등록
         </span>
       </p>
     </div>
