@@ -52,3 +52,30 @@ ALTER TABLE employee ADD column department varchar(20);
 
 -- mysql에서 update/delete 실행 제어 명렁어
 SET sql_safe_updates = 0;
+
+
+/*========================================*/
+-- mebertable 생성
+CREATE TABLE member(
+	sno	INT	PRIMARY KEY,
+    name VARCHAR(20),
+    address VARCHAR(50),
+    department VARCHAR(50),
+    mdate DATETIME
+);
+
+-- member 테이블 구조 확인
+DESC member;
+SELECT * FROM member;
+
+
+/*======================================*/
+-- dwitter 테이블 생성
+CREATE TABLE dwitter(
+	id int auto_increment PRIMARY KEY,
+    name VARCHAR(50),
+    message VARCHAR(255),
+    image VARCHAR(255),
+    sdate DATE
+);
+select * from dwitter
