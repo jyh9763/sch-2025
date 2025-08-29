@@ -1,6 +1,8 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function App() {
   const [page, setPage] = useState("home");
@@ -34,7 +36,7 @@ export default function App() {
 }
 
 /**
- * 사원 등록 컴포넌트
+ * 회원 등록 컴포넌트
  */
 function EmployeeRegister(props) {
   const [sno] = useState(Math.floor(Math.random() * 100000));
@@ -70,7 +72,7 @@ function EmployeeRegister(props) {
       <form>
         <ul>
           <li>
-            <label htmlFor="name">회원번호</label>
+            <label htmlFor="name">사번</label>
             <input
               type="text"
               id="sno"
@@ -109,7 +111,7 @@ function EmployeeRegister(props) {
               type="text"
               id="department"
               name="department"
-              placeholder="부서를 입력하세요"
+              placeholder="부서명을 입력하세요"
               onChange={(e) => {
                 setDepartment(e.target.value);
               }}
@@ -129,6 +131,7 @@ function EmployeeRegister(props) {
  */
 function EmployeeList(props) {
   const [employeeList, setEmployeeList] = useState([]);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     axios
@@ -138,18 +141,42 @@ function EmployeeList(props) {
         setEmployeeList(response.data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [count]);
+
+  function handleDeleteSuccess() {
+    setCount(count - 1);
+  }
+
+  function handleDelete(sno) {
+    alert(sno);
+    //axios => 스프링부트의 삭제 로직 호출!!
+    const data = { sno: sno };
+    
+    axios
+      .post("http://localhost:8080/api/members/delete", data)
+      .then((response) => {
+        if (response.data === "ok") {
+          alert("삭제가 완료되었습니다");
+          handleDeleteSuccess();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      
+  }
 
   return (
     <div>
       <table className="App-memberList-table">
         <thead>
           <tr>
-            <th>회원번호</th>
+            <th>사원번호</th>
             <th>이름</th>
             <th>주소</th>
             <th>부서</th>
-            <th>가입일</th>
+            <th>입사일</th>
+            <th>삭제</th>
           </tr>
         </thead>
         <tbody>
@@ -160,6 +187,11 @@ function EmployeeList(props) {
               <td>{employee.address}</td>
               <td>{employee.department}</td>
               <td>{employee.mdate}</td>
+              <td><FontAwesomeIcon
+                icon={faTrash}
+                className="trash"
+                onClick={() => handleDelete(employee.sno)}
+              /></td>
             </tr>
           ))}
         </tbody>
@@ -175,7 +207,7 @@ function EmployeeList(props) {
           className="App-link"
           onClick={() => props.handleChangePage("register")}
         >
-          회원 등록
+          사원 등록
         </span>
       </p>
     </div>
