@@ -1,6 +1,6 @@
 package com.sch.springboot.controller;
 
-import com.sch.springboot.dto.Member;
+import com.sch.springboot.entity.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +31,7 @@ public class SpringController {
     @GetMapping("/spring-api1")
     public String springApi(@ModelAttribute Member member){
         System.out.println(member.getName());
-        System.out.println(member.getAge());
+        //System.out.println(member.getAge());
         return member.toString();   // 주소값이 넘어옴.
 
 //        model.addAttribute("name", name);

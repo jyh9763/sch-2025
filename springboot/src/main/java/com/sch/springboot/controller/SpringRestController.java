@@ -1,6 +1,6 @@
 package com.sch.springboot.controller;
 
-import com.sch.springboot.dto.Member;
+import com.sch.springboot.entity.Member;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,9 +10,9 @@ public class SpringRestController {
     public Member springApi(){
         Member member = new Member();   // member 객체 생성
         member.setName("홍길동");
-        member.setAge(30);
+        //member.setAge(30);
         member.setAddress("서울시");
-        member.setSubject("SpringBoot");
+        //member.setSubject("SpringBoot");
         
         return member;    // 클라이언트에게 member 객체를 전송, json 형식으로 나옴.
     }
