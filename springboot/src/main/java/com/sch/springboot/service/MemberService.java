@@ -29,4 +29,9 @@ public class MemberService {
     public List<Member> list(){
         return memberRepository.findAll();
     }
+
+    // 회원 삭제
+    public String remove(Long sno){
+        return memberRepository.delete(sno);
+    }
 }

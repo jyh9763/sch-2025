@@ -27,4 +27,14 @@ public class JpaMemeberRepository implements MemberRepositoryInterface{
     public List<Member> findAll(){
         return em.createQuery("select m from Member m", Member.class).getResultList();
     }
+
+    // 회원 삭제
+    @Override
+    public String delete(Long sno){
+        Member findMember = em.find(Member.class, sno);
+        if (findMember != null){
+            em.remove(findMember);
+        }
+        return "ok";
+    }
 }
